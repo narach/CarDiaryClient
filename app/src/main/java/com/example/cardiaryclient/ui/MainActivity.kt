@@ -34,42 +34,5 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupRecyclerView()
-
-        with(binding) {
-            btnLoadData.setOnClickListener {
-                carsViewModel.getCars()
-                carsViewModel.res.observe(this@MainActivity, Observer { resource ->
-                    when(resource.status) {
-                        Status.SUCCESS -> {
-                            progress.visibility = View.GONE
-                            rvCarsList.visibility = View.VISIBLE
-                            resource.data?.let { response ->
-                                carsAdapter.submitList(response.content)
-                            }
-                        }
-                        Status.LOADING -> {
-                            progress.visibility = View.VISIBLE
-                            rvCarsList.visibility = View.GONE
-                        }
-                        Status.ERROR -> {
-                            progress.visibility = View.GONE
-                            rvCarsList.visibility = View.VISIBLE
-                            Snackbar.make(
-                                root,
-                                "Something went wrong when requesting cars list",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-                })
-            }
-        }
-    }
-
-    private fun setupRecyclerView() = binding.rvCarsList.apply {
-        carsAdapter = CarDtoAdapter()
-        adapter = carsAdapter
-        layoutManager = LinearLayoutManager(this@MainActivity)
     }
 }
