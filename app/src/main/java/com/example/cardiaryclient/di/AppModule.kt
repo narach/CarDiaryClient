@@ -1,6 +1,7 @@
 package com.example.cardiaryclient.di
 
 import com.example.cardiaryclient.BuildConfig
+import com.example.cardiaryclient.api.AuthApiService
 import com.example.cardiaryclient.api.CarsApiHelper
 import com.example.cardiaryclient.api.CarsApiHelperImpl
 import com.example.cardiaryclient.api.CarsApiService
@@ -55,4 +56,9 @@ object AppModule {
     @Provides
     fun provideCarsApiHelper(apiService: CarsApiService) : CarsApiHelper =
         CarsApiHelperImpl(carsApiService = apiService)
+
+    @Singleton
+    @Provides
+    fun provideAuthApiService(retrofit: Retrofit) =
+        retrofit.create(AuthApiService::class.java)
 }
