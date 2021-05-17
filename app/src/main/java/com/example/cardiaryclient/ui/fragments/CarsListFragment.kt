@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardiaryclient.databinding.FragmentCarsListBinding
@@ -22,7 +22,7 @@ class CarsListFragment : Fragment() {
     private lateinit var binding: FragmentCarsListBinding
     private lateinit var carDtoAdapter: CarDtoAdapter
     private lateinit var fContext: Context
-    private val carsViewModel: CarsViewModel by viewModels()
+    private val carsViewModel: CarsViewModel by activityViewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

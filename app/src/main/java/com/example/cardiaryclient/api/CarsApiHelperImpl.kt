@@ -8,8 +8,8 @@ class CarsApiHelperImpl @Inject constructor(
     private val carsApiService: CarsApiService
 ) : CarsApiHelper {
 
-    override suspend fun getCars(): Response<CarsData> {
-        return carsApiService.getCars()
+    override suspend fun getCars(authToken: String): Response<CarsData> {
+        return carsApiService.getCars(authToken)
     }
 
 }
