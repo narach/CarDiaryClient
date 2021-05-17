@@ -9,7 +9,7 @@ class CarsRepository @Inject constructor(
     private val carsApiHelper: CarsApiHelper,
     private val authApiService: AuthApiService
 ) {
-    suspend fun getCars() = carsApiHelper.getCars()
+    suspend fun getCars(authToken: String) = carsApiHelper.getCars(authToken)
 
     suspend fun authenticate(credentials: UserCredentials) = authApiService.authenticate(credentials)
 }
