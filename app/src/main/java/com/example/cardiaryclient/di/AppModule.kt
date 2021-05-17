@@ -1,6 +1,7 @@
 package com.example.cardiaryclient.di
 
 import com.example.cardiaryclient.BuildConfig
+import com.example.cardiaryclient.api.AuthApiService
 import com.example.cardiaryclient.api.CarsApiHelper
 import com.example.cardiaryclient.api.CarsApiHelperImpl
 import com.example.cardiaryclient.api.CarsApiService
@@ -8,8 +9,7 @@ import com.example.cardiaryclient.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module // Dagger Hilt - Configure components to inject
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
@@ -55,4 +55,9 @@ object AppModule {
     @Provides
     fun provideCarsApiHelper(apiService: CarsApiService) : CarsApiHelper =
         CarsApiHelperImpl(carsApiService = apiService)
+
+    @Singleton
+    @Provides
+    fun provideAuthApiService(retrofit: Retrofit) =
+        retrofit.create(AuthApiService::class.java)
 }
