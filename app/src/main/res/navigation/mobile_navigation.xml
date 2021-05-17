@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_main_to_list"
             app:destination="@id/carsListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/carsListFragment"
         android:name="com.example.cardiaryclient.ui.fragments.CarsListFragment"
         android:label="fragment_cars_list"
         tools:layout="@layout/fragment_cars_list" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.cardiaryclient.ui.fragments.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>
