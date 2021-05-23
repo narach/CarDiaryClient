@@ -7,30 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cardiaryclient.R
+import com.google.android.gms.maps.*
 
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MapsFragment : Fragment() {
-
-    private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
+class MapsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +26,22 @@ class MapsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+        mapFragment?.getMapAsync(this)
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        // Добавляем маркер с текущим местоположением
+        val itAcademyPos = LatLng(52.40533197184692, 30.920708495998014)
+        map.addMarker(MarkerOptions().position(itAcademyPos).title("ItAcademy Gomel"))
+//        map.moveCamera(CameraUpdateFactory.newLatLng(itAcademyPos))
+
+        // Двигаем камеру и приближаем
+//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(itAcademyPos, 14f))
+
+        // Задаем границы отображаемой области карты: ( Город Гомель )
+        val southWest = LatLng(52.402930382994, 30.906903486026984)
+        val northEast = LatLng(52.49806879410871, 31.052204820104112)
+        var gomelBounds = LatLngBounds(southWest, northEast)
+        map.moveCamera(CameraUpdateFactory.newLatLngBounds(gomelBounds, 0))
     }
 }

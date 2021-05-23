@@ -16,6 +16,11 @@
         <action
             android:id="@+id/action_mainFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_to_custom_map"
+            app:destination="@id/mapViewFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/carsListFragment"
@@ -27,4 +32,9 @@
         android:name="com.example.cardiaryclient.ui.fragments.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/mapViewFragment"
+        android:name="com.example.cardiaryclient.ui.fragments.MapViewFragment"
+        android:label="fragment_map_view"
+        tools:layout="@layout/fragment_map_view" />
 </navigation>

@@ -56,6 +56,10 @@ class MainFragment : Fragment() {
                 findNavController().navigate(R.id.action_mainFragment_to_mapsFragment)
             }
 
+            btnShowMapView.setOnClickListener {
+                findNavController().navigate(R.id.action_to_custom_map)
+            }
+
             btnAuthenticate.setOnClickListener {
                 val login = etEmail.text.toString()
                 val password = etPassword.text.toString()

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.MapViewFragment">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        map:uiZoomControls="true"
+        map:uiCompass="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slZoom" />
+
+    <RadioGroup
+        android:id="@+id/rgMapType"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/rbRoadmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Road" />
+
+        <RadioButton
+            android:id="@+id/rbSatellite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Satellite" />
+
+        <RadioButton
+            android:id="@+id/rbHybrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hybrid" />
+
+        <RadioButton
+            android:id="@+id/rbTerrain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terrain" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:text="Тип карты"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbShowDistricts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Districts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgMapType" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slZoom"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:stepSize="1"
+        android:tooltipText="Zoom level"
+        android:valueFrom="1"
+        android:valueTo="20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbShowDistricts" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
