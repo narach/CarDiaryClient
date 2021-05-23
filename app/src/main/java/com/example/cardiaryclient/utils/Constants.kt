@@ -1,5 +1,5 @@
 package com.example.cardiaryclient.utils
 
 object Constants {
-    const val carServiceBaseurl = "https://cardiary.herokuapp.com/api/v1/"
+    const val carServiceBaseurl = "http://cardiary.herokuapp.com/api/v1"
 }

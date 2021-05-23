@@ -41,6 +41,7 @@ class UploadUtility(private var activity: Activity) {
                         .build()
 
                 val request: Request = Request.Builder()
+                    .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZXdvazk5MDkyQGdyaWRtaXJlLmNvbSIsImF1ZCI6ImNhci1kaWFyeS1hcHAiLCJzdWJfaWQiOjQsInJvbGVzIjpbImFkbWluIiwibWFuYWdlciJdLCJpc3MiOiJjYXItZGlhcnktYXBpIiwiZXhwIjoxNjIyNjQwOTkyLCJpYXQiOjE2MjE3NzY5OTIsImp0aSI6IjkyYWMzMGY2LTc5YjQtNDVmNi1iYmY3LTQ0MWVkM2I3MjQ5MiJ9.74H_1vvCi8vbqIj3Pysu4flQT9Qgy2hPM63do7f0h8x6E92xfcRfmnoBrSP9ewXQJfDp3e7GhncRuN5WsY7aeg")
                     .url(serverURL)
                     .patch(requestBody)
                     .build()
